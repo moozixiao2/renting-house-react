@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Carousel } from 'antd-mobile'
 
-import { getSwiperData, getGroupsData, getNewsData } from '../utils/axios'
+import { getSwiperData, getGroupsData, getNewsData } from '../../utils/axios'
 
 import nav1 from '../../assets/images/nav-1.png'
 import nav2 from '../../assets/images/nav-2.png'

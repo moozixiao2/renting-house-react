@@ -4,11 +4,18 @@ import indexCss from './index.module.scss'
 
 import store from '../../store'
 export default class MooSearch extends Component {
+    state = {
+        cityName: store.getState().mapReducer.cityName
+    }
     constructor (props) {
         super(props)
-        this.state = {
-            cityName: store.getState().mapReducer.cityName
-        }
+        // 可能会有bug => 异步代码和同步代码的关系
+        this.state.cityName = store.getState().mapReducer.cityName;
+        // 开启一个订阅
+        store.subscribe(()=>{
+          // 这个代码会在 store发生修改的时候触发 
+          this.state.cityName = store.getState().mapReducer.cityName;
+        })
     }
     render() {
         return (
@@ -17,7 +24,7 @@ export default class MooSearch extends Component {
                    <div className={indexCss.mooSearchLeft}>
                         <div className={indexCss.selectCity}>
                             <div className={indexCss.cityName}>
-                                {this.state.cityName}
+                                {this.state.cityName === '' ? '获取中' : this.state.cityName}
                             </div>
                             <i className="iconfont icon-arrow"></i>
                         </div>

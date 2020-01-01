@@ -8,6 +8,11 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import My from "./pages/My";
 import News from "./pages/News";
+
+import { getLocalCity } from './utils/map'
+import { mapCityName  } from "./store/actionCreator";
+import store from './store'
+
 export default class App extends Component {
   render() {
     return (
@@ -20,6 +25,13 @@ export default class App extends Component {
         </Router>
       </Fragment>
     )
+  }
+  componentDidMount() {
+    getLocalCity()
+    .then(res=>{
+      // console.log(res)
+      store.dispatch(mapCityName(res.name === "全国" ? "北京" : res.name));
+    })
   }
 }
 
