@@ -17,3 +17,17 @@ export const getNewsData = () => {
         url: '/home/news'
     })
 }
+
+
+export const getAreaCity = (params) => {
+  return request({
+      url: '/area/city',
+      params
+  })
+}
+
+export const getHotCity = () => {
+  return request({
+      url: '/area/hot'
+  })
+}

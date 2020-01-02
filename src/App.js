@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import My from "./pages/My";
 import News from "./pages/News";
+import CityList from './pages/CityList'
 
 import { getLocalCity } from './utils/map'
 import { mapCityName  } from "./store/actionCreator";
@@ -22,6 +23,7 @@ export default class App extends Component {
           <Route path='/List' exact render={() => <MooLayout><List /></MooLayout>} />
           <Route path='/News' exact render={() => <MooLayout><News /></MooLayout>} />
           <Route path='/My' exact render={() => <MooLayout><My /></MooLayout>} />
+          <Route path='/CityList' component = {CityList} />
         </Router>
       </Fragment>
     )
