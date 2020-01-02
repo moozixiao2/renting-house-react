@@ -1,0 +1,107 @@
+.moo_bdmap {
+  .bd_map_content {
+    height: calc(100vh - 45px);
+    display: flex;
+    flex-direction: column;
+    .allmap {
+      flex: 1;
+
+      .circle {
+        height: 60px;
+        width: 60px;
+        background-color: yellowgreen;
+        color: #fff;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: translate(-50%, -50%);
+      }
+      .rect {
+        background-color: yellowgreen;
+        color: #fff;
+        padding: 3px;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .house_detail_list {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.5s;
+      .house_detail_list_title {
+        padding: 10px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #ccc;
+        span:nth-child(1) { 
+          font-weight: 600;
+          font-size: 16px;
+        }
+        span:nth-child(2) { 
+          font-size: 14px;
+          color: #666;
+        }
+      }
+
+      .house_detail_list_content {
+        background-color: #fff;
+        padding: 10px;
+        overflow: auto;
+        height: calc( 40vh - 40px );
+        .house_item {
+          display: flex;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+          .house_item_img_wrap {
+            flex: 1;
+            padding: 20px;
+            img {
+              border-radius: 5px;
+            }
+          }
+
+          .house_item_info_wrap {
+            flex: 2;
+            .house_info1 {
+              font-weight: 600;
+              font-size: 15px;
+              padding: 10px 0;
+            }
+
+            .house_info2 {
+              color: #666;
+              font-size: 13px;
+              padding: 10px 0;
+
+            }
+
+            .house_info3 {
+              padding: 10px 0;
+
+              span {
+                background-color: #e1f5ed;
+                color: green;
+                margin-right: 15px;
+              }
+            }
+
+            .house_info4 {
+              color: red;
+              span {
+                font-weight: 600;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .h40 {
+      height: 40vh;
+    
+    }
+  }
+}

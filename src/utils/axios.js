@@ -31,3 +31,24 @@ export const getHotCity = () => {
       url: '/area/hot'
   })
 }
+
+export const getAreaInfo = (params) => {
+  return request({
+      url: '/area/info',
+      params
+  })
+}
+
+export const getAreaMap = (params) => {
+  return request({
+      url: '/area/map',
+      params
+  })
+}
+
+export const getHouses = (params) => {
+  return request({
+      url: '/houses',
+      params
+  })
+}

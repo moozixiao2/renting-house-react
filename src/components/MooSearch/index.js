@@ -49,7 +49,7 @@ class MooSearch extends Component {
                             </div>
                         </div>
                    </div>
-                   <div className={indexCss.mooSearchRight}>
+                   <div className={indexCss.mooSearchRight} onClick={()=>this.props.history.push("/BDMap")}>
                         <i className={'iconfont icon-map ' + indexCss['icon-map']}></i>
                    </div>
                 </div> 
