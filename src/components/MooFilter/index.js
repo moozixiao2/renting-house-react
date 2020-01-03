@@ -28,16 +28,21 @@ export default class MooFilter extends Component {
     otherValue: []
   }
 
+  Unsubscribe = null
+
   constructor () {
     super ()
-    store.subscribe(this.getData);
+    this.Unsubscribe = store.subscribe(this.getData);
+  }
+  componentDidMount () {
+    const cityName = store.getState().mapReducer.cityName;
+    if (cityName) {
+      this.getData();
+    }
   }
 
-  componentDidMount () {
-    // const cityName = store.getState().mapReducer.cityName;
-    // if (cityName) {
-      this.getData();
-    // }
+  componentWillUnmount () {
+    this.Unsubscribe()
   }
 
   /* 获得数据 */
@@ -83,10 +88,11 @@ export default class MooFilter extends Component {
   /* 几列 */
   getChildrenLevel = (arr) => {
     // console.log(arr)
+    
     let set = new Set();
     let index = 0;
     const getChildren = (arr) => {
-      if (arr.length) {
+      if (arr && arr.length) {
         arr.forEach( v => {
           if (v.children) {
             index ++
@@ -134,6 +140,12 @@ export default class MooFilter extends Component {
 
   /* 确定 */
   handleFilterOk = () => {
+    let { filterValues } = this.state
+
+    // 向父组件传值
+    this.props.handleFilter(filterValues)
+
+    this.setState({ selectIndex:-1  });
   }
 
   /* 标题点击 内容切换 */

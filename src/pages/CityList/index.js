@@ -159,10 +159,10 @@ export default class CityList extends Component {
   }
 
   componentDidMount() {
-    // let cityName = store.getState().mapReducer.cityName
-    // if(cityName) {
-    this.getAllCity()
-    // }
+    let cityName = store.getState().mapReducer.cityName
+    if(cityName) {
+      this.getAllCity()
+    }
   }
 
   render() {

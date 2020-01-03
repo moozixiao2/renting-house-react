@@ -26,13 +26,13 @@ class Home extends Component {
                     id: 0,
                     text: '整租',
                     imgSrc: nav1,
-                    url: ''
+                    url: '/List?rentType=true'
                 },
                 {
                     id: 1,
                     text: '合租',
                     imgSrc: nav2,
-                    url: ''
+                    url: '/List?rentType=false'
                 },
                 {
                     id: 2,
