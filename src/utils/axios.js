@@ -52,3 +52,10 @@ export const getHouses = (params) => {
       params
   })
 }
+
+export const getHousesCondition = (params) => {
+  return request({
+      url: '/houses/condition',
+      params
+  })
+}

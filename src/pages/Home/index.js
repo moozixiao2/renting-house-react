@@ -10,10 +10,12 @@ import nav4 from '../../assets/images/nav-4.png'
 
 import MooSearch from '../../components/MooSearch'
 
+import { withRouter } from 'react-router-dom'
+
 // 引入 scss
 import indexCss from './index.module.scss'
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super (props)
         this.state = {
@@ -23,22 +25,26 @@ export default class Home extends Component {
                 {
                     id: 0,
                     text: '整租',
-                    imgSrc: nav1
+                    imgSrc: nav1,
+                    url: ''
                 },
                 {
                     id: 1,
                     text: '合租',
-                    imgSrc: nav2
+                    imgSrc: nav2,
+                    url: ''
                 },
                 {
                     id: 2,
                     text: '地图找房',
-                    imgSrc: nav3
+                    imgSrc: nav3,
+                    url: '/BDMap'
                 },
                 {
                     id: 3,
                     text: '去出租',
-                    imgSrc: nav4
+                    imgSrc: nav4,
+                    url: ''
                 }
             ],
             groupsData: [],
@@ -79,9 +85,9 @@ export default class Home extends Component {
                 {/* 导航开始 */}
                 <div className={indexCss.navWrap}>
                     {
-                        this.state.navData.map(v => <div className={indexCss.navItem} key={v.id}>
-                            <img src={v.imgSrc} alt="" />
-                            <div>{v.text}</div>
+                        this.state.navData.map(v => <div className={indexCss.navItem} key={v.id} onClick={() => this.props.history.push(v.url)}>
+                          <img src={v.imgSrc} alt="" />
+                          <div>{v.text}</div>
                         </div>)
                     }
                 </div>
@@ -183,3 +189,4 @@ export default class Home extends Component {
         this.getNewsData()
     }
 }
+export default withRouter(Home)

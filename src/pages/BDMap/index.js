@@ -89,7 +89,6 @@ export default class BDMap extends Component {
       label.addEventListener("click", () => {
         // 判断 是否要项目详细房源信息
         if (this.SiteIndex === this.Sites.length) {
-          console.log(12343, this.SitesIndex, this.Sites.length, v.value)
           this.getDetail(v.value)
           this.setState({ IsShow: true })
           // 让底部 div 变化稳定
@@ -107,12 +106,12 @@ export default class BDMap extends Component {
     })
 
     // 放大地图
-    this.SitesIndex ++
+    this.SiteIndex ++
   }
 
   getDetail = async (cityId) => {
     const res = (await getHouses({cityId})).data.body.list
-    console.log(res, 111)
+    // console.log(res)
     this.setState({ houseList: res })
   }
   
