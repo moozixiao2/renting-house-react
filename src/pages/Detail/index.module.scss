@@ -1,0 +1,129 @@
+.detail {
+    background-color: #fff;
+    color: #333;
+}
+
+.detailNavbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background: transparent;
+    z-index: 2;
+    span {
+        color: #fff
+    }
+}
+
+p {
+    margin: 0;
+}
+
+.detailCarousel {
+    img {
+        width: 100%;
+        height: 252px;
+        vertical-align: top;
+    }
+}
+
+
+.item {
+    padding: 20px 0;
+    border-bottom: solid 1px #e1e1e1;
+}
+.detailContent {
+    padding: 20px 15px;
+    .titleWrap {
+        .detailTitle {
+            font-size: 18px;
+        }
+        .detailTags {
+            margin-top: 10px;
+            span {
+                padding: 2px 4px;
+                background-color: #e1f5f8;
+                font-size: 12px;
+                color: #48c3d0
+            }
+        }
+    }
+
+    .houseInfo {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 5%;
+        .infoItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p {
+                &:first-child {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #fa5741;
+                    span {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+                &:last-child {
+                    margin-top: 10px;
+                    color: #999999
+                }
+            }
+        }
+    }
+
+    .houseDesc {
+        display: flex;
+        flex-wrap: wrap;
+        border: none;
+        .descItem {
+            width: 50%;
+            font-size: 14px;
+            span {
+                color: #999999;
+            }
+            &:nth-child(-n+2) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.location {
+    border-top: 12px solid #f6f5f6;
+}
+
+.housePT {
+    border-top: 12px solid #f6f5f6;
+    border-bottom: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 10px 15px;
+    .housePTTitle {
+        width: 100%;
+        font-size: 16px;
+        font-weight:600;
+        line-height: 50px;
+        border-bottom: solid 2px #e7e7e7;
+    }
+    .iconItem {
+        width: 16.66666%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        i {
+            margin-bottom: 5px;
+            font-size: 22px;
+        }
+    }
+}
+
+.noneData {
+    padding-top: 12px;
+    font-size: 16px;
+}
