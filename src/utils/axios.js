@@ -53,6 +53,12 @@ export const getHouses = (params) => {
   })
 }
 
+export const getHousesDetail = (params) => {
+  return request({
+      url: '/houses/' + params
+  })
+}
+
 export const getHousesCondition = (params) => {
   return request({
       url: '/houses/condition',

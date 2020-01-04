@@ -46,7 +46,7 @@ class ListIndex extends Component {
       price: filterValues[2][0] && filterValues[2][0].split('|')[1],
       more: filterValues[3].join(',')
     }
-    console.log(params)
+    // console.log(params)
     // 拼接参数
     this.QueryParams = Object.assign(this.QueryParams, params)
 
@@ -74,12 +74,15 @@ class ListIndex extends Component {
     const res = (await getHouses(this.QueryParams)).data.body
     // console.log(res)
     this.count = res.count
+    
     // mooList 被覆盖，没有追加
     const { mooList } = this.state
     // 追加
     this.setState({
       mooList: [...mooList, ...res.list]
     })
+
+    this.isLoadding && Toast.info('共找到' + this.count + '套房源。', 2)
     // 数据请求完成
     this.isLoadding = false
   }
@@ -128,15 +131,13 @@ class ListIndex extends Component {
     }
   } 
 
-  componentDidMount() {
+  componentWillMount() {
     // console.log(this.props)
     let search = this.props.location.search
     if(search) {
       let params = this.getLocationParams(search)
       this.QueryParams = Object.assign(this.QueryParams, params)
     }
-
-    this.handleFilter()
     this.getList()
   }
 

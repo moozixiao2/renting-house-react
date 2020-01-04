@@ -10,6 +10,7 @@ import My from "./pages/My";
 import News from "./pages/News";
 import CityList from './pages/CityList'
 import BDMap from './pages/BDMap'
+import Detail from './pages/Detail'
 
 import { getLocalCity } from './utils/map'
 import { mapCityName  } from "./store/actionCreator";
@@ -26,6 +27,7 @@ export default class App extends Component {
           <Route path='/My' exact render={() => <MooLayout><My /></MooLayout>} />
           <Route path='/CityList' component = {CityList} />
           <Route path='/BDMap' component = {BDMap} />
+          <Route path='/Detail' component = {Detail} />
         </Router>
       </Fragment>
     )
