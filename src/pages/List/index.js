@@ -82,7 +82,7 @@ class ListIndex extends Component {
       mooList: [...mooList, ...res.list]
     })
 
-    this.isLoadding && Toast.info('共找到' + this.count + '套房源。', 2)
+    this.QueryParams.start === 1 && this.isLoadding && Toast.info('共找到' + this.count + '套房源。', 2)
     // 数据请求完成
     this.isLoadding = false
   }
