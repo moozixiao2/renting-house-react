@@ -11,6 +11,8 @@ import News from "./pages/News";
 import CityList from './pages/CityList'
 import BDMap from './pages/BDMap'
 import Detail from './pages/Detail'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 import { getLocalCity } from './utils/map'
 import { mapCityName  } from "./store/actionCreator";
@@ -28,6 +30,8 @@ export default class App extends Component {
           <Route path='/CityList' component = {CityList} />
           <Route path='/BDMap' component = {BDMap} />
           <Route path='/Detail' component = {Detail} />
+          <Route path='/Login' component = {Login} />
+          <Route path='/Register' component = {Register} />
         </Router>
       </Fragment>
     )

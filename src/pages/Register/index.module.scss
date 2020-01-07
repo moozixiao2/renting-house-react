@@ -1,0 +1,140 @@
+.registorWrap {
+  background-color: #fff;
+  height: 100vh;
+  .registorNav {
+    color: #b1b7be;
+    span {
+      color: #b1b7be;
+    }
+  }
+  .registor {
+    padding: 0 5%;
+    .registorTitle {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #615e6f;
+    }
+    :global {
+      form {
+        padding: 8% 0 8%;
+      }
+      .formLabel {
+        margin-top: 20px;
+        font-size: 17px;
+        color: #5a5961;
+      }
+      .input {
+        height: 55px;
+        width: 100%;
+        padding: 2px 0;
+        border: 0;
+        color: #d6d6d6;
+        font-size: 16px;
+        background-color: transparent;
+        border-bottom: solid 1px #f0f0f0;
+      }
+  
+      .input::placeholder {
+        color: #d6d6d6;
+      }
+
+      label{
+        margin-top: 12px;
+        line-height: 20px;
+        display: inline-block;
+        margin-left: 5px;
+        color: #777;
+        span:last-child {
+          color: #fdd201
+        }
+      }
+      .loginPromise input{
+          width: 15px;
+          height: 15px;
+          appearance: none;
+          position: relative;
+          vertical-align: top;
+          border-radius: 3px;
+          margin-right: 5px;
+      }
+      .loginPromise input:before{
+          content: '';
+          width: 15px;
+          height: 15px;
+          border: 1px solid #7d7d7d;
+          display: inline-block;
+          vertical-align: middle;
+          border-radius: 3px;
+      }
+      .loginPromise input:checked:before{
+          content: '';
+          width: 15px;
+          height: 15px;
+          border: 1px solid #c59c5a;
+          background:#c59c5a;
+          display: inline-block;
+          vertical-align: middle;
+      }
+      .loginPromise input:checked:after{
+          content: '';
+          width: 7px;
+          height:5px;
+          border: 2px solid white;
+          border-top: transparent;
+          border-right: transparent;
+          text-align: center;
+          display: block;
+          position: absolute;
+          top: 5px;
+          left:4px;
+          transform: rotate(-45deg);
+      }
+      .loginPromise input:checked + span{
+          color: #c59c5a;
+      }
+      
+      .loginPromise input:checked + div {
+        display: none;
+      }
+
+      .formSubmit {
+        margin-top: 27px;
+        button {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #faea9d;
+          font-size: 20px;
+          // font-weight: 600;
+          letter-spacing: 3px;
+          color: #fff;
+          box-shadow: 0 3px 5px #faea9d;
+          border-radius: 25px;
+          border: none;
+          outline: none;
+        }
+      }
+      
+      .error {
+        margin-top: 5px;
+        color: tomato
+      }
+    }
+
+    .toLogin {
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+      color: #b8b9bb;
+      span {
+        color: #fdd201;
+      }
+    }
+  }
+}

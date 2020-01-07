@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 
 import indexCss from './index.module.scss'
 
-export default class My extends Component {
+import { withRouter } from 'react-router-dom'
+class My extends Component {
     render() {
         return (
             <Fragment>
@@ -15,7 +16,7 @@ export default class My extends Component {
                             <img src='http://hkzf.zbztb.cn/img/profile/avatar.png' />
                             <div className={indexCss.login}>
                                 <p>游客</p>
-                                <div className={indexCss.loginBtn}>去登录</div>
+                                <div className={indexCss.loginBtn} onClick={() => this.props.history.push('/Login')}>去登录</div>
                             </div>
                         </div>
                     </div>
@@ -55,3 +56,5 @@ export default class My extends Component {
         )
     }
 }
+
+export default  withRouter(My)

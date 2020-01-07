@@ -21,6 +21,12 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   // 在接收响应做些什么，例如跳转到登录页
   Toast.hide()
+  // 后台返回的 状态码 处理
+  const {status, description} = response.data
+  if(status !== 200) {
+    return Toast.fail(description, 2, false)
+  }
+
   return response;
 }, function (error) {
   // 对响应错误做点什么

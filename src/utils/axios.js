@@ -65,3 +65,19 @@ export const getHousesCondition = (params) => {
       params
   })
 }
+
+export const userLogin = (data) => {
+  return request({
+    method: 'post',
+    url: '/user/login',
+    data
+  })
+}
+
+export const userRegister = (data) => {
+  return request({
+    method: 'post',
+    url: '/user/registered',
+    data
+  })
+}
