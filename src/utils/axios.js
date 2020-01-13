@@ -144,6 +144,7 @@ export const postHousesImage = (data) => {
     data
   })
 }
+<<<<<<< HEAD
 
 
 
@@ -153,3 +154,5 @@ export const getRentout = () => {
     url: '/user/houses'
   })
 }
+=======
+>>>>>>> 0b129af1b115598eb49da34fa4e36f7b9dab3347
