@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { NavBar, Icon, Modal, Toast } from 'antd-mobile'
 import indexCss from './index.module.scss'
 import { userRegister } from '../../utils/axios'
+import { setToken } from '../../utils/token'
 
 import { withFormik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -91,7 +92,8 @@ const config = {
               // replace 替换当前的历史记录
               formikBag.props.history.replace(state.from.pathname)
             }else{
-              formikBag.props.history.go(-1)
+              setToken(body.token)
+              formikBag.props.history.push('/My')
             }
           }
         }

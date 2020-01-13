@@ -4,7 +4,7 @@ import indexCss from './index.module.scss'
 
 import store from '../../store'
 
-import {withRouter  } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class MooSearch extends Component {
     state = {

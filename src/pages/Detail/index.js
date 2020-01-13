@@ -1,15 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { NavBar, Icon, Carousel } from 'antd-mobile';
-import { getHousesDetail } from "../../utils/axios";
+import { NavBar, Icon, Carousel, Modal, Toast } from 'antd-mobile';
+import { getHousesDetail, userIsFavorites, userFavorites, userCancelFavorites } from "../../utils/axios";
 import indexCss from "./index.module.scss";
 import store from '../../store'
+import { hasToken } from '../../utils/token';
+import { baseURL } from '../../utils/url';
 
 const BMap = window.BMap;
+const alert = Modal.alert
 export default class Detail extends Component {
 
   state = {
     detail: {},
-    imgHeight: 252
+    imgHeight: 252,
+    isFavorite: false
   }
 
   Unsubscribe = null
@@ -20,6 +24,10 @@ export default class Detail extends Component {
 
   componentWillMount() {
     this.getDetail();
+
+    // 是否登录
+    if(!hasToken) return
+    this.userIsFavorite()
   }
   componentWillUnmount() {
     this.Unsubscribe()
@@ -115,6 +123,68 @@ export default class Detail extends Component {
     pathname = pathname.substring(1).split('/')
     return pathname[1]
   }
+  /* 是否收藏 */
+  userIsFavorite = async () => {
+    const pathname = this.props.location.pathname
+    const {isFavorite} = (await userIsFavorites(this.getId(pathname))).data.body
+    // console.log(isFavorite)
+    this.setState ({
+      isFavorite
+    })
+  }
+
+  /* 收藏 */
+  handleCollect = async () => {
+    // 未登录情况
+    if (!hasToken()) {
+      alert('提示', '登录后才能收藏房源，是否去登录？', [
+        { text: '取消'},
+        {
+          text: '确定', onPress: () => this.props.history.push('/Login')
+        }
+      ])
+      return
+    }
+
+    const { houseCode } = this.state.detail
+
+    // 登录了
+    if (!this.state.isFavorite) {
+      // 未收藏
+      const res = (await userFavorites(houseCode)).data
+      // console.log(res) 
+      if (res.status === 200) {
+        Toast.success('收藏成功！', 2, false)
+        this.setState({
+          isFavorite: true
+        })
+      } else {
+        // token 失效或过期
+        alert('提示', '登录后才能收藏房源，是否去登录？', [
+          { text: '取消'},
+          {
+            text: '确定', onPress: () => this.props.history.push('/Login')
+          }
+        ])
+      }
+    } else {
+      // 已收藏 取消收藏
+      const res = (await userCancelFavorites(houseCode)).data
+      if (res.status === 200) {
+        Toast.success('取消收藏！', 2, false)
+        this.setState({
+          isFavorite: false
+        })
+      } else {
+        alert('提示', '登录后才能收藏房源，是否去登录？', [
+          { text: '取消'},
+          {
+            text: '确定', onPress: () => this.props.history.push('/Login')
+          }
+        ])
+      }
+    }
+  }
 
   computedIcon = (arr) => {
     // "电视", "冰箱", "洗衣机", "空调", "热水器", "沙发", "宽带", "衣柜", '天然气'
@@ -158,7 +228,7 @@ export default class Detail extends Component {
   }
 
   render() {
-    const { detail, imgHeight } = this.state
+    const { detail, imgHeight, isFavorite } = this.state
     // 若不加 以下 判断，则会出现 在 detail.数组.map 时出错，则需要加入 {detail.数组 && detail.数组.map} 判断
     if (!Object.keys(detail).length) {
       return <Fragment></Fragment>
@@ -244,7 +314,7 @@ export default class Detail extends Component {
             <div className={indexCss.conditionContent}>
               <div className={indexCss.houseOwnerWrap}>
                 <div className={indexCss.houseOwner}>
-                  <img src='http://hkzf.zbztb.cn/img/avatar.png' />
+                  <img src='/img/avatar.png' alt="" />
                   <div className={indexCss.houseNameAndAuth}>
                     <p>王女士</p>
                     <p><i className="iconfont icon-auth"></i> <span>已认证房主</span></p>
@@ -277,7 +347,7 @@ export default class Detail extends Component {
 
           {/* 下方 nav */}
           <div className={indexCss.subNav}>
-            <div className={indexCss.subNavItem + ' ' + indexCss.toCollect}><img src='http://hkzf.zbztb.cn/img/unstar.png' />收藏</div>
+            <div className={indexCss.subNavItem + ' ' + indexCss.toCollect} onClick={this.handleCollect}><img src={baseURL + (isFavorite ? '/img/star.png' : '/img/unstar.png')} alt='icon' />{isFavorite ? '已收藏' : '收藏'}</div>
             <div className={indexCss.subNavItem + ' ' + indexCss.toContact}>在线咨询</div>
             <div className={indexCss.subNavItem + ' ' + indexCss.toCall}>电话预约</div>
           </div>

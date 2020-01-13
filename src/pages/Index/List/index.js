@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import { NavBar, Icon, Toast } from 'antd-mobile'
-import MooSearch from '../../components/MooSearch'
-import MooFilter from '../../components/MooFilter'
+import MooSearch from '../../../components/MooSearch'
+import MooFilter from '../../../components/MooFilter'
 import { List, AutoSizer } from "react-virtualized";
 
 import IndexCss from './index.module.scss'
-import { getAreaInfo,getHouses } from '../../utils/axios'
-import store from '../../store'
+import { getAreaInfo,getHouses } from '../../../utils/axios'
+import store from '../../../store'
 
 class ListIndex extends Component {
   state = {
@@ -82,7 +82,7 @@ class ListIndex extends Component {
       mooList: [...mooList, ...res.list]
     })
 
-    this.QueryParams.start === 1 && this.isLoadding && Toast.info('共找到' + this.count + '套房源。', 2)
+    this.QueryParams.start === 1 && this.isLoadding && Toast.info('共找到' + this.count + '套房源。', 2, false)
     // 数据请求完成
     this.isLoadding = false
   }

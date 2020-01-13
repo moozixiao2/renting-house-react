@@ -2,18 +2,18 @@
 
 const TOKEN_KEY = 'moozf_token'
 
-export const setToken = (token) => {
+export function setToken (token) {
   localStorage.setItem(TOKEN_KEY, token)
 }
 
-export const getToken = () => {
+export function getToken () {
   return localStorage.getItem(TOKEN_KEY)
 }
 
-export const removeToken = () => {
+export function removeToken () {
   localStorage.removeItem(TOKEN_KEY)
 }
 
-export const hasToken = () => {
+export function hasToken () {
   return !!getToken()
 }

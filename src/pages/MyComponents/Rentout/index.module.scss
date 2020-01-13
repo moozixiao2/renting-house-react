@@ -1,0 +1,13 @@
+.rentout {
+  background-color: #fff;
+  min-height: calc(100vh - 45px);
+  .rentoutNavbar {
+    background: #fff; 
+    span {
+      color: #615e6f
+    }
+  }
+  .rentItemWrap, .noRentout{
+    margin-top: 45px;
+  }
+}
