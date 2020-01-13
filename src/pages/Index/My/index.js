@@ -64,13 +64,32 @@ class My extends Component {
 
   // 获得用户数据
   getUserInfo = async () => {
-    const res = (await getUserInfo()).data.body
+    const res = (await getUserInfo()).data
     // console.log(res)
+    if (res.status === 400) {
+      await userLogout()
+      // 清除 本地
+      removeToken()
+      removeLocUserInfo()
+      // 重置 state
+      this.setState({
+        isLogin: false,
+        userinfo: {}
+      })
+      return alert('提示', '登录失效，请重新登录？', [
+        { text: '取消', style: 'default' },
+        {
+          text: '确定', onPress: () => {
+            this.props.history.push('/Login')
+          }
+        }
+      ])
+    }
     this.setState({
-      userinfo: res
+      userinfo: res.body
     })
     // 存入本地
-    setLocUserInfo(res)
+    setLocUserInfo(res.body)
   }
 
   // 登出

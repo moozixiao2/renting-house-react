@@ -134,3 +134,13 @@ export const userGetFavorites = () => {
     url: '/user/favorites/'
   })
 }
+
+/* 上传图片/houses/image */
+export const postHousesImage = (data) => {
+  return request({
+    headers: {'Content-Type': 'multipart/form-data'},
+    method: 'post',
+    url: '/houses/image',
+    data
+  })
+}

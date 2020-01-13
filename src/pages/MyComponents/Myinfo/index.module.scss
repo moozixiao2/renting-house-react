@@ -85,6 +85,23 @@
       margin-top: 5px;
       color: tomato
     }
-
+    .avatarWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .am-image-picker {
+      .am-flexbox-item {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        &:nth-child(2), &:nth-child(3), &:last-child {
+          display: none;
+        }
+      }
+      .am-image-picker-list .am-image-picker-upload-btn, .am-image-picker-item-content {
+        border-radius: 50%;
+      }
+    }
   }
 }
