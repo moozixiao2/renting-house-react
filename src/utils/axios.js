@@ -144,7 +144,6 @@ export const postHousesImage = (data) => {
     data
   })
 }
-<<<<<<< HEAD
 
 
 
@@ -154,5 +153,12 @@ export const getRentout = () => {
     url: '/user/houses'
   })
 }
-=======
->>>>>>> 0b129af1b115598eb49da34fa4e36f7b9dab3347
+
+/* 添加房源/user/houses */
+export const addRentout = (data) => {
+  return request({
+    method: 'post',
+    url: '/user/houses',
+    data
+  })
+}

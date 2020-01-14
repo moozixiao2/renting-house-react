@@ -1,0 +1,22 @@
+.packWrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+  .packItem {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #6f6f6f;
+    i {
+      padding: 15px 0 10px;
+      font-size: 22px;
+    }
+  }
+  :global {
+    .active {
+      color: #21b97a;
+    }
+  }
+}
