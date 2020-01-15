@@ -18,6 +18,7 @@ import Collect from './pages/MyComponents/Collect'
 import Record from './pages/MyComponents/Record'
 import Rentout from './pages/MyComponents/Rentout'
 import AddRentout from './pages/MyComponents/Rentout/AddHouse'
+import AddRentoutSearch from './pages/MyComponents/Rentout/Search'
 
 import { getLocalCity } from './utils/map'
 import { mapCityName } from "./store/actionCreator";
@@ -45,6 +46,7 @@ export default class App extends Component {
           <MooAuthRoute path='/Record' component= {Record} />
           <MooAuthRoute path='/Rentout' component= {Rentout} />
           <MooAuthRoute path='/Rent/AddHouse' component= {AddRentout} />
+          <MooAuthRoute path='/Rent/Search' component= {AddRentoutSearch} />
         </Router>
       </Fragment>
     )

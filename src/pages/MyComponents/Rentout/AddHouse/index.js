@@ -84,7 +84,7 @@ export default class AddHouse extends Component {
       files
     });
   }
-
+  /* 提交 */
   handleSubmit = async () => {
     const {form, files} = this.state
     if (files.length <= 0) {
@@ -96,6 +96,7 @@ export default class AddHouse extends Component {
     files.forEach(v => fd.append('file', v.file))
     const res = await postHousesImage(fd)
     // console.log(res)
+    form.community = form.community.id
     form.houseImg = res.data.body.join('|')
     form.oriented = form.oriented[0]
     form.roomType = form.roomType[0]
@@ -108,6 +109,33 @@ export default class AddHouse extends Component {
       this.props.history.push('/Rentout')
     }
   }
+
+  /* 取消 */
+  handleCancel = () => {
+    alert('提示', '是否放弃发布房源？',[
+      {
+        text: '放弃',
+        onPress: async () => this.props.history.go(-1)
+      },
+      {
+        text: '继续编辑'
+      }
+    ])
+  }
+
+  /* 路由是滞有传参 */
+  componentDidMount () {
+    const {community} = this.props.history.location
+    // console.log(this.props.history, community)
+    if(community) {
+      this.setState({
+        form: {
+          ...this.state.form,
+          community
+        }
+      })
+    }
+  }
   render() {
     const { multiple, files, form } = this.state
     const { title, description, houseImg, oriented, supporting, price, roomType, size, floor, community } = this.state.form
@@ -116,7 +144,7 @@ export default class AddHouse extends Component {
         <div className={indexCss.addHouse}>
           <MooNavBar className={indexCss.addHouseNavBar}>添加房源</MooNavBar>
           <List renderHeader={() => '房源信息'} className={indexCss.addList}>
-            <Item className='listItem' arrow="horizontal" extra={'请输入小区名称'}>小区名称</Item>
+            <Item className='listItem' onClick={() => this.props.history.replace('/Rent/Search')} arrow="horizontal" extra={community.name || '请输入小区名称'}>小区名称</Item>
             <InputItem
               value={price}
               placeholder="请输入租金/月"
@@ -134,8 +162,8 @@ export default class AddHouse extends Component {
             extra="㎡"
             onChange={e => this.setState({
               form: {
-                ...size,
-                title: e
+                ...form,
+                size: e
               }
             })}
             >建筑面积</InputItem>
@@ -215,7 +243,7 @@ export default class AddHouse extends Component {
           </List>
           {/* 底部 */}
           <Flex className={indexCss.bottom}>
-            <Flex.Item className={indexCss.cancel}>取消</Flex.Item>
+            <Flex.Item className={indexCss.cancel} onClick={this.handleCancel}>取消</Flex.Item>
             <Flex.Item className={indexCss.submit} onClick={this.handleSubmit.bind(this)}>提交</Flex.Item>
           </Flex>
         </div>

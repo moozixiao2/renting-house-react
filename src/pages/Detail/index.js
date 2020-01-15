@@ -258,8 +258,7 @@ export default class Detail extends Component {
                 style={{ display: 'inline-block', width: '100%', height: imgHeight }}
               >
                 <img
-
-                  src={process.env.REACT_APP_API_URL + v}
+                  src={baseURL + v}
                   alt=""
                   style={{ width: '100%', verticalAlign: 'top' }}
                   onLoad={() => {
@@ -314,7 +313,7 @@ export default class Detail extends Component {
             <div className={indexCss.conditionContent}>
               <div className={indexCss.houseOwnerWrap}>
                 <div className={indexCss.houseOwner}>
-                  <img src='/img/avatar.png' alt="" />
+                  <img src={baseURL + '/img/avatar.png'} alt="" />
                   <div className={indexCss.houseNameAndAuth}>
                     <p>王女士</p>
                     <p><i className="iconfont icon-auth"></i> <span>已认证房主</span></p>

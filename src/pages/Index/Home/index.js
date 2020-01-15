@@ -44,7 +44,7 @@ class Home extends Component {
                     id: 3,
                     text: '去出租',
                     imgSrc: nav4,
-                    url: ''
+                    url: '/Rent/AddHouse'
                 }
             ],
             groupsData: [],

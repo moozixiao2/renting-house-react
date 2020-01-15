@@ -66,6 +66,15 @@ export const getHousesCondition = (params) => {
   })
 }
 
+/* 小区关键词查询/area/community */
+export const getAreaCommunity = (params) => {
+  return request({
+      url: '/area/community',
+      params
+  })
+}
+
+
 export const userLogin = (data) => {
   return request({
     method: 'post',

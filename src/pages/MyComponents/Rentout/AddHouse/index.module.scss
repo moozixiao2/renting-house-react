@@ -4,7 +4,7 @@
   min-height: calc(100vh - 45px);
   background-color: #fff;
   font-size: 15px;
-  overflow: scroll;
+  // overflow: scroll;
   .addHouseNavBar {
     background-color: #fff;
     z-index: 999;
@@ -34,6 +34,9 @@
           color: #6f6f6f;
         }
       }
+      .am-list-extra {
+        flex-basis: 58%;
+      }
       .am-input-control{
         input {
           font-size: 15px !important;
@@ -59,6 +62,7 @@
     height: 45px;
     color: #21b97a;
     background-color: #fff;
+    z-index: 3;
     .cancel, .submit {
       flex: 1;
       height: 100%;
